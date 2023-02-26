@@ -1,11 +1,11 @@
 import {
   AcademicCapIcon,
-  CalendarIcon,
+  // CalendarIcon,
   DownloadIcon,
-  FlagIcon,
+  // FlagIcon,
   MapIcon,
   OfficeBuildingIcon,
-  SparklesIcon,
+  // SparklesIcon,
 } from '@heroicons/react/outline';
 
 import GithubIcon from '../components/Icon/GithubIcon';
@@ -14,8 +14,8 @@ import LinkedInIcon from '../components/Icon/LinkedInIcon';
 import StackOverflowIcon from '../components/Icon/StackOverflowIcon';
 import TwitterIcon from '../components/Icon/TwitterIcon';
 import heroImage from '../images/header-background.webp';
-import porfolioImage1 from '../images/portfolio/portfolio-1.jpg';
-import profilepic from '../images/profilepic.jpg';
+// import porfolioImage1 from '../images/portfolio/portfolio-1.jpg';
+// import profilepic from '../images/profilepic.jpg';
 import testimonialImage from '../images/testimonial.webp';
 import {
   About,
@@ -23,8 +23,8 @@ import {
   ContactType,
   Hero,
   HomepageMeta,
-  PortfolioItem,
-  SkillGroup,
+  // PortfolioItem,
+  // SkillGroup,
   Social,
   TestimonialSection,
   TimelineItem,
