@@ -49,7 +49,7 @@ export const SectionId = {
   Resume: 'setting',
   Skills: 'skills',
   Stats: 'stats',
-  Testimonials: 'testimonials',
+  Testimonials: 'findings',
 } as const;
 
 export type SectionId = typeof SectionId[keyof typeof SectionId];
@@ -173,19 +173,16 @@ export const testimonial: TestimonialSection = {
   imageSrc: testimonialImage,
   testimonials: [
     {
-      name: 'John Doe',
-      text: 'Use this as an opportunity to promote what it is like to work with you. High value testimonials include ones from current or past co-workers, managers, or from happy clients.',
-      image: 'https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/169.jpg',
+      name: 'Finding #1',
+      text: 'We conclude that our supervised TF-IDF module is successful in identifying relatively representative seed words, as evidenced by achieving a micro-F1 of 0.876 and a macro-F1 of 0.871 when classifying documents into existing labels.',
     },
     {
-      name: 'Jane Doe',
-      text: 'Here you should write some nice things that someone has said about you. Encourage them to be specific and include important details (notes about a project you were on together, impressive quality produced, etc).',
-      image: 'https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/14.jpg',
+      name: 'Finding #2',
+      text: 'We take documents with max similarity < 0.2 as unconfident and cluster them into new labels. Our result shows a precision of 0.845 and recall of 0.285 for this binary classification (existing v.s. new).',
     },
     {
-      name: 'Someone else',
-      text: 'Add several of these, and keep them as fresh as possible, but be sure to focus on quality testimonials with strong highlights of your skills/work ethic.',
-      image: 'https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/69.jpg',
+      name: 'Finding #3',
+      text: 'The word clouds of the newly suggested labels and the original labels show a good match. Thus, we validate that using Word2Vec word embed- ding vectors and averaging for document representation is an effective approach. However, the label generated are not satisfactory.',
     },
   ],
 };

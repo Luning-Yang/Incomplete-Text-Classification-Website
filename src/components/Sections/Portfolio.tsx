@@ -17,9 +17,19 @@ const Portfolio: FC = memo(() => {
       </div>
 
       <div className="flex flex-col gap-y-8">
-      <h4 className="self-left text-xl font-bold text-white">1. Baseline Model</h4>
-      <p className="self-left text-sm font-light text-white">Our baseline model is </p>
+      <h4 className="self-left text-lg font-bold text-white">1. Baseline Model</h4>
+      <p className="self-left text-sm font-light text-white">The baseline model is a combination 
+      of a few vanilla basic models: <br /> (1) a supervised TF-IDF model for seed word learning; 
+      <br /> (2) a weakly supervised Word2Vec model that takes in seed words and output document 
+      and class representations; <br /> (3) a cosine similarity measure for confidence split; 
+      <br /> (4) a Gaussian Mixture Model for clustering unconfident </p>
       </div>
+
+      <div className="flex flex-col gap-y-8">
+      <h4 className="self-left text-lg font-bold text-white"> <br /> 2. Advanced Model</h4>
+      </div>
+
+
     </Section>
   );
 });
