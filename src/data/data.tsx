@@ -1,5 +1,5 @@
 import {
-  AcademicCapIcon,
+  // AcademicCapIcon,
   // CalendarIcon,
   DownloadIcon,
   // FlagIcon,
