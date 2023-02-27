@@ -2,7 +2,7 @@ import classNames from 'classnames';
 import {FC, memo, UIEventHandler, useCallback, useEffect, useMemo, useRef, useState} from 'react';
 
 import {isApple, isMobile} from '../../config';
-import {SectionId, testimonial} from '../../data/data';
+import {SectionId} from '../../data/data';
 import {Testimonial} from '../../data/dataDef';
 import useInterval from '../../hooks/useInterval';
 import useWindow from '../../hooks/useWindow';
@@ -84,12 +84,12 @@ const Testimonials: FC = memo(() => {
               className="no-scrollbar flex w-full touch-pan-x snap-x snap-mandatory gap-x-6 overflow-x-auto scroll-smooth"
               onScroll={handleScroll}
               ref={scrollContainer}>
-              {testimonials.map((testimonial, index) => {
+              {/*{testimonials.map((testimonial, index) => {
                 const isActive = index === activeIndex;
                 return (
                   <Testimonial isActive={isActive} key={`${testimonial.name}-${index}`} testimonial={testimonial} />
                 );
-              })}
+              })}*/}
             </div>
             <div className="flex gap-x-4">
               {[...Array(testimonials.length)].map((_, index) => {

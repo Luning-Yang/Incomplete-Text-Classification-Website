@@ -16,7 +16,7 @@ import TwitterIcon from '../components/Icon/TwitterIcon';
 import heroImage from '../images/header-background.webp';
 // import porfolioImage1 from '../images/portfolio/portfolio-1.jpg';
 // import profilepic from '../images/profilepic.jpg';
-import testimonialImage from '../images/testimonial.webp';
+// import testimonialImage from '../images/testimonial.webp';
 import {
   About,
   ContactSection,
@@ -26,7 +26,7 @@ import {
   // PortfolioItem,
   // SkillGroup,
   Social,
-  TestimonialSection,
+  // TestimonialSection,
   TimelineItem,
 } from './dataDef';
 
