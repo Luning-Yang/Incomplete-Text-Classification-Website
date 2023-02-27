@@ -1,6 +1,6 @@
 import {FC, memo} from 'react';
 
-import {data, evaluation, SectionId} from '../../../data/data';
+import {data, evaluation, models, SectionId, results} from '../../../data/data';
 import Section from '../../Layout/Section';
 import ResumeSection from './ResumeSection';
 // import {SkillGroup} from './Skills';
@@ -17,6 +17,18 @@ const Resume: FC = memo(() => {
         </ResumeSection>
         <ResumeSection title="Evaluation">
           {evaluation.map((item, index) => (
+            <TimelineItem item={item} key={`${item.title}-${index}`} />
+          ))}
+        </ResumeSection>
+
+         <ResumeSection title="Method Overview">
+          {models.map((item, index) => (
+            <TimelineItem item={item} key={`${item.title}-${index}`} />
+          ))}
+        </ResumeSection>
+
+        <ResumeSection title="Results">
+          {results.map((item, index) => (
             <TimelineItem item={item} key={`${item.title}-${index}`} />
           ))}
         </ResumeSection>

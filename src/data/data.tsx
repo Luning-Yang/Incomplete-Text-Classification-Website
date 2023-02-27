@@ -34,7 +34,7 @@ import {
  * Page meta data
  */
 export const homePageMeta: HomepageMeta = {
-  title: 'React Resume Template',
+  title: 'Incomplete Text Classification',
   description: "Example site built with Tim Baker's react resume template",
 };
 
@@ -43,7 +43,7 @@ export const homePageMeta: HomepageMeta = {
  */
 export const SectionId = {
   Hero: 'hero',
-  About: 'about',
+  About: 'intro',
   Contact: 'contact',
   Portfolio: 'models',
   Resume: 'setting',
@@ -59,22 +59,17 @@ export type SectionId = typeof SectionId[keyof typeof SectionId];
  */
 export const heroData: Hero = {
   imageSrc: heroImage,
-  name: `Incomplete Text Classification`,
+  name: `Incomplete Supervision: Text Classification based on a Subset of Labels`,
   description: (
     <>
-      <p className="prose-sm text-stone-200 sm:prose-base lg:prose-lg">
-      Many text classification models rely on an assumption that requires users to provide the model with <strong className="text-stone-100">
-      a full set of class labels</strong>. 
-      This is not realistic, as users may not be aware of all possible classes in advance, or may not be able to obtain an exhaustive list. 
-      Thus, we propose to work in a new setting where both labeled and unlabeled articles exist, and aim to discover classes among the unlabeled articles. 
-      We explore the potential of weakly supervised ML to detect class labels that humans may not recognize, thus facilitating more accurate classification. 
-      At this time, the baseline model learns well from the supervised set, but label generation is less satisfactory.
+      <p className="mt-2 text-3xl font-bold tracking-tight text-white sm:text-4xl">
+      Authors: Yacun Wang, Luning Yang
       </p>
     </>
   ),
   actions: [
     {
-      href: '/assets/resume.pdf',
+      href: '/assets/report.pdf',
       text: 'Report',
       primary: true,
       Icon: DownloadIcon,
@@ -92,7 +87,11 @@ export const heroData: Hero = {
  */
 export const aboutData: About = {
   // profileImageSrc: profilepic,
-  description: `We are senior students at UCSD.`,
+  description: `Many text classification models rely on an assumption that requires users to provide the model with a full set of class labels. This is not realistic, \
+  as users may not be aware of all possible classes in advance, or may not be able to obtain an exhaustive list. Thus, we propose to work in a new setting where \
+  both labeled and unlabeled articles exist, and aim to discover classes among the unlabeled articles. We explore the potential of weakly supervised ML to detect \
+  class labels that humans may not recognize, thus facilitating more accurate classification. At this time, the baseline model learns well from the supervised set, \
+  but label generation is less satisfactory.`,
   aboutItems: [
     {label: 'Section', text: 'B14: Weakly Supervised NLP', Icon: MapIcon},
     {label: 'Advisor', text: 'Jingbo Shang', Icon: OfficeBuildingIcon},
@@ -165,6 +164,43 @@ export const evaluation: TimelineItem[] = [
   },
 
 ];
+
+
+export const models: TimelineItem[] = [
+  {
+    title: 'Baseline Model',
+    content: <p>The baseline model is a combination of a few vanilla basic models: <br />
+                (1) a supervised TF-IDF model for seed word learning; <br />
+                (2) a weakly supervised Word2Vec model that takes in seed words and output document and class representations; <br />
+                (3) a cosine similarity measure for confidence split; <br />
+                (4) a Gaussian Mixture Model for clustering unconfident</p>,
+
+  },
+  {
+    title: 'Advanced Model',
+    content: <p>Pending.</p>,
+  },
+];
+
+export const results: TimelineItem[] = [
+  {
+    title: 'Summary of Findings',
+    content: <p> (1) We conclude that our supervised TF-IDF module is successful in identifying relatively representative seed words, 
+    as evidenced by achieving a micro-F1 of 0.876 and a macro-F1 of 0.871 when classifying documents into existing labels. <br />
+    (2) We take documents with max similarity &lt; 0.2 as unconfident and cluster them into new labels. Our result shows a precision of 0.845 
+    and recall of 0.285 for this binary classification (existing v.s. new). <br /> 
+    (3) The word clouds of the newly suggested labels and the original labels show a good match. 
+    Thus, we validate that using Word2Vec word embedding vectors and averaging for document 
+    representation is an effective approach. However, the label generated are not satisfactory.</p>,
+
+  },
+];
+
+
+
+
+
+
 
 /**
  * Testimonial section
