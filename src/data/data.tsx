@@ -202,26 +202,26 @@ export const results: TimelineItem[] = [
 
 
 
-/**
- * Testimonial section
- */
-export const testimonial: TestimonialSection = {
-  imageSrc: testimonialImage,
-  testimonials: [
-    {
-      name: 'Finding #1',
-      text: 'We conclude that our supervised TF-IDF module is successful in identifying relatively representative seed words, as evidenced by achieving a micro-F1 of 0.876 and a macro-F1 of 0.871 when classifying documents into existing labels.',
-    },
-    {
-      name: 'Finding #2',
-      text: 'We take documents with max similarity < 0.2 as unconfident and cluster them into new labels. Our result shows a precision of 0.845 and recall of 0.285 for this binary classification (existing v.s. new).',
-    },
-    {
-      name: 'Finding #3',
-      text: 'The word clouds of the newly suggested labels and the original labels show a good match. Thus, we validate that using Word2Vec word embed- ding vectors and averaging for document representation is an effective approach. However, the label generated are not satisfactory.',
-    },
-  ],
-};
+// /**
+//  * Testimonial section
+//  */
+// export const testimonial: TestimonialSection = {
+//   imageSrc: testimonialImage,
+//   testimonials: [
+//     {
+//       name: 'Finding #1',
+//       text: 'We conclude that our supervised TF-IDF module is successful in identifying relatively representative seed words, as evidenced by achieving a micro-F1 of 0.876 and a macro-F1 of 0.871 when classifying documents into existing labels.',
+//     },
+//     {
+//       name: 'Finding #2',
+//       text: 'We take documents with max similarity < 0.2 as unconfident and cluster them into new labels. Our result shows a precision of 0.845 and recall of 0.285 for this binary classification (existing v.s. new).',
+//     },
+//     {
+//       name: 'Finding #3',
+//       text: 'The word clouds of the newly suggested labels and the original labels show a good match. Thus, we validate that using Word2Vec word embed- ding vectors and averaging for document representation is an effective approach. However, the label generated are not satisfactory.',
+//     },
+//   ],
+// };
 
 /**
  * Contact section
