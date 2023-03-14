@@ -49,11 +49,11 @@ export type SectionId = typeof SectionId[keyof typeof SectionId];
  */
 export const heroData: Hero = {
   imageSrc: heroImage,
-  name: `Incomplete Supervision: Text Classification based on a Subset of Labels`,
+  name: `Text Classification based on a Subset of Labels`,
   description: (
     <>
       <p className="mt-2 text-3xl font-bold tracking-tight text-white sm:text-4xl">
-      Authors: Yacun Wang, Luning Yang
+      Yacun Wang, Luning Yang
       </p>
     </>
   ),
@@ -65,8 +65,8 @@ export const heroData: Hero = {
       Icon: DownloadIcon,
     },
     {
-      href: `#${SectionId.Contact}`,
-      text: 'Contact',
+      href: `https://github.com/colts661/Incomplete-Text-Classification.git`,
+      text: 'Github Repo',
       primary: false,
     },
   ],

@@ -11,19 +11,18 @@ import {FC, memo} from 'react';
 
 import {data, evaluation, models, SectionId, results, models1} from '../../../data/data';
 import Section from '../../Layout/Section';
-import ResumeSection from './ResumeSection';
+// import ResumeSection from './ResumeSection';
 import TimelineItem from './TimelineItem';
 
 const Resume: FC = memo(() => {
   return (
     <Section className="bg-neutral-100" sectionId={SectionId.Resume}>
-      <div className="flex flex-col divide-y-2 divide-neutral-300">
-        <ResumeSection>
+     
 
         
-        <div className="relative h-max" style={{textAlign: 'center'}}>
+        <div className="relative h-max" style={{textAlign: 'left'}}>
         <div style={{display: 'inline-block'}}>
-        <h2 className="text-3xl font-bold uppercase text-neutral-800" style={{textAlign: 'center', display: 'flex', justifyContent: 'center', alignItems: 'center'}}>{"Data"}</h2>
+        <h2 className="text-3xl font-bold text-neutral-800" style={{textAlign: 'center', display: 'flex', justifyContent: 'center', alignItems: 'center'}}>{"Data"}</h2>
         <div style={{backgroundColor: 'orange', height: '2px', width: '100%'}}></div>
          <div style={{height: '2em'}}></div>
         </div>
@@ -32,11 +31,13 @@ const Resume: FC = memo(() => {
           {data.map((item, index) => (
             <TimelineItem item={item} key={`${item.title}-${index}`} />
           ))}
-        </ResumeSection>
-        <ResumeSection>
-        <div className="relative h-max" style={{textAlign: 'center'}}>
+        
+
+
+        
+        <div className="relative h-max" style={{textAlign: 'left'}}>
         <div style={{display: 'inline-block'}}>
-        <h2 className="text-3xl font-bold uppercase text-neutral-800" style={{textAlign: 'center', display: 'flex', justifyContent: 'center', alignItems: 'center'}}>{"evaluation"}</h2>
+        <h2 className="text-3xl font-bold text-neutral-800" style={{textAlign: 'center', display: 'flex', justifyContent: 'center', alignItems: 'center'}}>{"Evaluation"}</h2>
         <div style={{backgroundColor: 'orange', height: '2px', width: '100%'}}></div>
          <div style={{height: '2em'}}></div>
         </div>
@@ -44,13 +45,10 @@ const Resume: FC = memo(() => {
           {evaluation.map((item, index) => (
             <TimelineItem item={item} key={`${item.title}-${index}`} />
           ))}
-        </ResumeSection>
-
-         <ResumeSection>
-
-          <div className="relative h-max" style={{textAlign: 'center'}}>
+        
+          <div className="relative h-max" style={{textAlign: 'left'}}>
         <div style={{display: 'inline-block'}}>
-        <h2 className="text-3xl font-bold uppercase text-neutral-800" style={{textAlign: 'center', display: 'flex', justifyContent: 'center', alignItems: 'center'}}>{"Method Overview"}</h2>
+        <h2 className="text-3xl font-bold text-neutral-800" style={{textAlign: 'center', display: 'flex', justifyContent: 'center', alignItems: 'center'}}>{"Method Overview"}</h2>
         <div style={{backgroundColor: 'orange', height: '2px', width: '100%'}}></div>
          <div style={{height: '2em'}}></div>
         </div>
@@ -72,13 +70,11 @@ const Resume: FC = memo(() => {
           ))}
 
 
-        </ResumeSection>
+        
 
-        <ResumeSection>
-
-        <div className="relative h-max" style={{textAlign: 'center'}}>
+        <div className="relative h-max" style={{textAlign: 'left'}}>
         <div style={{display: 'inline-block'}}>
-        <h2 className="text-3xl font-bold uppercase text-neutral-800" style={{textAlign: 'center', display: 'flex', justifyContent: 'center', alignItems: 'center'}}>{"Result"}</h2>
+        <h2 className="text-3xl font-bold text-neutral-800" style={{textAlign: 'center', display: 'flex', justifyContent: 'center', alignItems: 'center'}}>{"Result"}</h2>
         <div style={{backgroundColor: 'orange', height: '2px', width: '100%'}}></div>
          <div style={{height: '2em'}}></div>
         </div>
@@ -96,8 +92,8 @@ const Resume: FC = memo(() => {
 
 
 
-        </ResumeSection>
-      </div>
+
+
     </Section>
   );
 });
