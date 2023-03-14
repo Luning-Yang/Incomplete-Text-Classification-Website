@@ -43,6 +43,14 @@ export interface About {
   aboutItems: AboutItem[];
 }
 
+export interface About1 {
+  profileImageSrc?: string;
+}
+
+
+
+
+
 export interface AboutItem {
   label: string;
   text: string;

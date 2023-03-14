@@ -1,45 +1,100 @@
+
+import classNames from 'classnames';
+import Image from 'next/image';
+import {aboutData1, aboutData2} from '../../../data/data';
+
+
+
 import {FC, memo} from 'react';
 
-import {data, evaluation, models, SectionId, results} from '../../../data/data';
+import {data, evaluation, models, SectionId, results, models1} from '../../../data/data';
 import Section from '../../Layout/Section';
 import ResumeSection from './ResumeSection';
-// import {SkillGroup} from './Skills';
 import TimelineItem from './TimelineItem';
 
 const Resume: FC = memo(() => {
   return (
     <Section className="bg-neutral-100" sectionId={SectionId.Resume}>
       <div className="flex flex-col divide-y-2 divide-neutral-300">
-        <ResumeSection title="Experiment Data">
+        <ResumeSection>
+
+        
+        <div className="relative h-max" style={{textAlign: 'center'}}>
+        <div style={{display: 'inline-block'}}>
+        <h2 className="text-3xl font-bold uppercase text-neutral-800" style={{textAlign: 'center', display: 'flex', justifyContent: 'center', alignItems: 'center'}}>{"Data"}</h2>
+        <div style={{backgroundColor: 'orange', height: '2px', width: '100%'}}></div>
+         <div style={{height: '2em'}}></div>
+        </div>
+        </div>
+
           {data.map((item, index) => (
             <TimelineItem item={item} key={`${item.title}-${index}`} />
           ))}
         </ResumeSection>
-        <ResumeSection title="Evaluation">
+        <ResumeSection>
+        <div className="relative h-max" style={{textAlign: 'center'}}>
+        <div style={{display: 'inline-block'}}>
+        <h2 className="text-3xl font-bold uppercase text-neutral-800" style={{textAlign: 'center', display: 'flex', justifyContent: 'center', alignItems: 'center'}}>{"evaluation"}</h2>
+        <div style={{backgroundColor: 'orange', height: '2px', width: '100%'}}></div>
+         <div style={{height: '2em'}}></div>
+        </div>
+        </div>
           {evaluation.map((item, index) => (
             <TimelineItem item={item} key={`${item.title}-${index}`} />
           ))}
         </ResumeSection>
 
-         <ResumeSection title="Method Overview">
+         <ResumeSection>
+
+          <div className="relative h-max" style={{textAlign: 'center'}}>
+        <div style={{display: 'inline-block'}}>
+        <h2 className="text-3xl font-bold uppercase text-neutral-800" style={{textAlign: 'center', display: 'flex', justifyContent: 'center', alignItems: 'center'}}>{"Method Overview"}</h2>
+        <div style={{backgroundColor: 'orange', height: '2px', width: '100%'}}></div>
+         <div style={{height: '2em'}}></div>
+        </div>
+        </div>
+
           {models.map((item, index) => (
             <TimelineItem item={item} key={`${item.title}-${index}`} />
           ))}
+
+          
+                <div className="relative h-600 w-650 overflow-hidden rounded-xl md:h-62 md:w-120">
+                  <Image alt="about-me-image" layout="responsive" src={aboutData1.profileImageSrc} />
+                </div>
+
+          <div style={{height: '2em'}}></div>
+
+          {models1.map((item, index) => (
+            <TimelineItem item={item} key={`${item.title}-${index}`} />
+          ))}
+
+
         </ResumeSection>
 
-        <ResumeSection title="Results">
+        <ResumeSection>
+
+        <div className="relative h-max" style={{textAlign: 'center'}}>
+        <div style={{display: 'inline-block'}}>
+        <h2 className="text-3xl font-bold uppercase text-neutral-800" style={{textAlign: 'center', display: 'flex', justifyContent: 'center', alignItems: 'center'}}>{"Result"}</h2>
+        <div style={{backgroundColor: 'orange', height: '2px', width: '100%'}}></div>
+         <div style={{height: '2em'}}></div>
+        </div>
+        </div>
+
+
+
           {results.map((item, index) => (
             <TimelineItem item={item} key={`${item.title}-${index}`} />
           ))}
-        </ResumeSection>
-        {/*<ResumeSection title="Skills">
-          <p className="pb-8">Here you can show a snapshot of your skills to show off to employers</p>
-          <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
-            {skills.map((skillgroup, index) => (
-              <SkillGroup key={`${skillgroup.name}-${index}`} skillGroup={skillgroup} />
-            ))}
+          
+          <div className="relative h-70 w-90  overflow-hidden rounded-xl md:h-70 md:w-120">
+            <Image alt="about-me-image1" layout="responsive" src={aboutData2.profileImageSrc} />
           </div>
-        </ResumeSection>*/}
+
+
+
+        </ResumeSection>
       </div>
     </Section>
   );

@@ -14,19 +14,17 @@ import LinkedInIcon from '../components/Icon/LinkedInIcon';
 import StackOverflowIcon from '../components/Icon/StackOverflowIcon';
 import TwitterIcon from '../components/Icon/TwitterIcon';
 import heroImage from '../images/header-background.webp';
-// import porfolioImage1 from '../images/portfolio/portfolio-1.jpg';
-// import profilepic from '../images/profilepic.jpg';
-// import testimonialImage from '../images/testimonial.webp';
+
+import profilepic from '../images/model-pipeline.png';
+import profilepic1 from '../images/word-cloud.png';
 import {
   About,
+  About1,
   ContactSection,
   ContactType,
   Hero,
   HomepageMeta,
-  // PortfolioItem,
-  // SkillGroup,
   Social,
-  // TestimonialSection,
   TimelineItem,
 } from './dataDef';
 
@@ -45,11 +43,7 @@ export const SectionId = {
   Hero: 'hero',
   About: 'intro',
   Contact: 'contact',
-  // Portfolio: 'models',
   Resume: 'setting',
-  // Skills: 'skills',
-  // Stats: 'stats',
-  // Testimonials: 'findings',
 } as const;
 
 export type SectionId = typeof SectionId[keyof typeof SectionId];
@@ -86,55 +80,48 @@ export const heroData: Hero = {
  * About section
  */
 export const aboutData: About = {
-  // profileImageSrc: profilepic,
-  description: `Many text classification models rely on an assumption that requires users to provide the model with a full set of class labels. This is not realistic, \
-  as users may not be aware of all possible classes in advance, or may not be able to obtain an exhaustive list. Thus, we propose to work in a new setting where \
-  both labeled and unlabeled articles exist, and aim to discover classes among the unlabeled articles. We explore the potential of weakly supervised ML to detect \
-  class labels that humans may not recognize, thus facilitating more accurate classification. At this time, the baseline model learns well from the supervised set, \
-  but label generation is less satisfactory.`,
+  description: `Most text classification models require users to provide a full set of potential class labels, \
+  and force the model to predict within the set. This creates burden for humans to be as comprehensive and accurate \
+  as possible in manual labeling, which is unrealistic. We explore the Incomplete Text Classification (IC-TC) setting: \
+  Models mine patterns in a small labeled set \
+  which only contains existing labels, apply patterns to predict into existing labels in an unlabeled set, and \
+  detect out-of-pattern clusters for potential new label discoveries.`.trim(),
   aboutItems: [
     {label: 'Section', text: 'B14: Weakly Supervised NLP', Icon: MapIcon},
     {label: 'Advisor', text: 'Jingbo Shang', Icon: OfficeBuildingIcon},
   ],
 };
 
+export const aboutData1: About1 = {
+  profileImageSrc: profilepic,
+};
 
-/**
- * Portfolio section
- */
-// export const portfolioItems: PortfolioItem[] = [
-//   {
-//     title: 'Project title 1',
-//     description: 'Give a short description of your project here.',
-//     url: 'https://timbaker.me',
-//     image: porfolioImage1,
-//   },
-// ];
+export const aboutData2: About1 = {
+  profileImageSrc: profilepic1,
+};
+
+
 
 /**
  * Resume section -- TODO: Standardize resume contact format or offer MDX
  */
 export const data: TimelineItem[] = [
   {
-    title: 'NYT-Fine',
-    content: <p>11K news article documents from New York Times, with 26 fine-grained labels indicating topics of the article.</p>,
-  },
-  {
-    title: 'Subreddits',
-    content: <p>48K social media posts from Reddit, with 20 subreddit topics served as labels.</p>,
-  },
-  {
     title: 'DBPedia',
-    content: <p>560K Wikipedia articles, with 14 evenly-distributed classes and 50 average words per document.</p>,
+    content: <p> <li> 560K Wikipedia articles, 14 evenly-distributed classes, average 50 words per document. Originally all labeled. </li>
+                <li> For incompleteness: remove 5 classes entirely, keep 10% of the remaining 9 classes to form the labeled set.</li>
+                <li>36K labeled documents, 524K unlabeled documents with unseen labels.</li>
+                <li>Seen Labels: Book, Film, Album, Plant, Animal, Village, River, Athlete, Company; Unseen Labels: Building, Transportation, Politics, Artist, School.</li>
+            </p>,
   },
 ];
 
 export const evaluation: TimelineItem[] = [
   {
-    title: 'Binary Task',
+    title: 'New Label Binary',
     content: (
       <p>
-        Whether the new document belongs to non-existing classes. Report precision and recall.
+        Whether the new document belongs to unseen classes. Report precision and recall scores.
       </p>
     ),
   },
@@ -142,86 +129,68 @@ export const evaluation: TimelineItem[] = [
     title: 'Existing Performance',
     content: (
       <p>
-        The quality of predicting to existing labels. Report micro- and macro-F1 score
+        The multi-class classification result of all documents with ground truth as existing labels. Report micro- and macro-F1.
       </p>
     ),
   },
   {
-    title: 'New Label Generation',
+    title: 'New Label Quality',
     content: (
       <p>
-        The quality of predicting to existing labels. Report micro- and macro-F1 score
+        Manually comparing the newly generated labels with the true non-existing labels.
       </p>
     ),
   },
-  {
-    title: 'Full Evaluation',
-    content: (
-      <p>
-        Using automatic mapping, report the micro-and macro- F1 scores of all the predicted labels.
-      </p>
-    ),
-  },
-
 ];
 
 
 export const models: TimelineItem[] = [
   {
-    title: 'Baseline Model',
-    content: <p>The baseline model is a combination of a few vanilla basic models: <br />
-                (1) a supervised TF-IDF model for seed word learning; <br />
-                (2) a weakly supervised Word2Vec model that takes in seed words and output document and class representations; <br />
-                (3) a cosine similarity measure for confidence split; <br />
-                (4) a Gaussian Mixture Model for clustering unconfident</p>,
+    title: 'Module',
+    content: <p><li><strong className="text-stone-100" style={{ color: 'black' }}>Seed Words</strong>: Top 10 TF-IDF scores per existing class, de-duplicated.</li>
+                <li><strong className="text-stone-100" style={{ color: 'black' }}>Class Representation</strong>: Average embedding of picked seed words. </li>
+                <li><strong className="text-stone-100" style={{ color: 'black' }}>Document Representation</strong>: Average embedding of words in doc. </li>
+                <li><strong className="text-stone-100" style={{ color: 'black' }}>Confidence</strong>: Cosine similarity between class, document representations. </li>
+                <li><strong className="text-stone-100" style={{ color: 'black' }}>Clustering</strong>: Gaussian Mixture Model with 5 classes. </li>
+              </p>
 
   },
+];
+
+
+export const models1: TimelineItem[] = [
   {
-    title: 'Advanced Model',
-    content: <p>Pending.</p>,
+    title: 'Final Model',
+    content: <p><li><strong className="text-stone-100" style={{ color: 'black' }}>Word Embeddings</strong>: Average contextualized embedding of all occurrences from pre-trained bert-base-uncased model, dimension 768.</li>
+                <li><strong className="text-stone-100" style={{ color: 'black' }}>Representations</strong>: Use PCA to reduce embedding dimension to 128. </li>
+                <li><strong className="text-stone-100" style={{ color: 'black' }}>New Label Generation</strong>: Use ChatGPT API -- (1) Generate topics for top 25 documents in Gaussian probability per cluster; (2) Use the topics to generate class label. </li>
+              </p>
+
   },
 ];
+
+
+
+
+
+
 
 export const results: TimelineItem[] = [
   {
     title: 'Summary of Findings',
-    content: <p> (1) We conclude that our supervised TF-IDF module is successful in identifying relatively representative seed words, 
-    as evidenced by achieving a micro-F1 of 0.876 and a macro-F1 of 0.871 when classifying documents into existing labels. <br />
-    (2) We take documents with max similarity &lt; 0.2 as unconfident and cluster them into new labels. Our result shows a precision of 0.845 
-    and recall of 0.285 for this binary classification (existing v.s. new). <br /> 
-    (3) The word clouds of the newly suggested labels and the original labels show a good match. 
-    Thus, we validate that using Word2Vec word embedding vectors and averaging for document 
-    representation is an effective approach. However, the label generated are not satisfactory.</p>,
+    content: <p><li><strong className="text-stone-100" style={{ color: 'black' }}>Seed Words</strong>: By inspection, TF-IDF is capable to identify quality seed words, especially after removing all duplicate seed words appeared in more than one label. </li>
+    <li><strong className="text-stone-100" style={{ color: 'black' }}>Confidence Split</strong>: By the bottom-left histogram, we consider a similarity score lower than 0.2 to be unconfident.</li>
+    <li><strong className="text-stone-100" style={{ color: 'black' }}>New Label Binary</strong>: Precision 0.844, Recall 0.694.</li>
+    <li> <strong className="text-stone-100" style={{ color: 'black' }}>Existing Performance</strong>: Micro-F1 0.889, Macro-F1 0.885.</li>
+    <li><strong className="text-stone-100" style={{ color: 'black' }}>Clustering</strong>: By the bottom-right t-SNE low-dimensional representation, most unconfident documents have neighbor patterns to form clusters.</li>
+    <li><strong className="text-stone-100" style={{ color: 'black' }}>Generated Labels</strong>: By word clouds on the left, most important words show in aligned clusters, confirming the quality of BERT 
+    contextualized class/document representations; ChatGPT also produces reasonable generic labels.</li>
+    </p>,
 
   },
 ];
 
 
-
-
-
-
-
-// /**
-//  * Testimonial section
-//  */
-// export const testimonial: TestimonialSection = {
-//   imageSrc: testimonialImage,
-//   testimonials: [
-//     {
-//       name: 'Finding #1',
-//       text: 'We conclude that our supervised TF-IDF module is successful in identifying relatively representative seed words, as evidenced by achieving a micro-F1 of 0.876 and a macro-F1 of 0.871 when classifying documents into existing labels.',
-//     },
-//     {
-//       name: 'Finding #2',
-//       text: 'We take documents with max similarity < 0.2 as unconfident and cluster them into new labels. Our result shows a precision of 0.845 and recall of 0.285 for this binary classification (existing v.s. new).',
-//     },
-//     {
-//       name: 'Finding #3',
-//       text: 'The word clouds of the newly suggested labels and the original labels show a good match. Thus, we validate that using Word2Vec word embed- ding vectors and averaging for document representation is an effective approach. However, the label generated are not satisfactory.',
-//     },
-//   ],
-// };
 
 /**
  * Contact section
