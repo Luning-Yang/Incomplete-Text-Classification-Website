@@ -222,10 +222,35 @@ export const contact: ContactSection = {
 /**
  * Social items
  */
-export const socialLinks: Social[] = [
-  {label: 'Github', Icon: GithubIcon, href: 'https://github.com/tbakerx'},
-  {label: 'Stack Overflow', Icon: StackOverflowIcon, href: 'https://stackoverflow.com/users/8553186/tim-baker'},
-  {label: 'LinkedIn', Icon: LinkedInIcon, href: 'https://www.linkedin.com/in/timbakerx/'},
-  {label: 'Instagram', Icon: InstagramIcon, href: 'https://www.instagram.com/tbakerx/'},
-  {label: 'Twitter', Icon: TwitterIcon, href: 'https://twitter.com/TimBakerx'},
-];
+export const contact: ContactSection = {
+  headerText: 'Get in touch.',
+  description: 'Here is a good spot for a message to your readers to let them know how best to reach out to you.',
+  items: [
+    {
+      type: ContactType.Email,
+      text: 'yaw006@ucsd.edu',
+       href: 'mailto: yaw006@ucsd.edu',
+    },
+
+     {
+      type: ContactType.Email,
+      text: 'l4yang@ucsd.edu',
+      href: 'mailto: l4yang@ucsd.edu',
+    },
+    {
+      type: ContactType.Location,
+      text: 'University of California San Diego, US',
+      href: 'https://www.google.com/maps/d/viewer?mid=1rRQbZPK04KMnBJbyneZ35ItQWpo&hl=en&ll=32.88006040000004%2C-117.23401350000002&z=18',
+    },
+    {
+      type: ContactType.Github,
+      text: 'colts661',
+      href: 'https://github.com/colts661',
+    },
+    {
+      type: ContactType.Github,
+      text: 'Luning-Yang',
+      href: 'https://github.com/Luning-Yang',
+    },
+  ],
+};

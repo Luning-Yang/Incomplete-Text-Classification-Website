@@ -59,9 +59,9 @@ const Resume: FC = memo(() => {
           ))}
 
           
-                <div className="relative h-600 w-650 overflow-hidden rounded-xl md:h-62 md:w-120">
+           {/*     <div className="relative h-600 w-650 overflow-hidden rounded-xl md:h-62 md:w-120">
                   <Image alt="about-me-image" layout="responsive" src={'../../../images/model-pipeline.png'} />
-                </div>
+                </div>*/}
 
           <div style={{height: '2em'}}></div>
 
