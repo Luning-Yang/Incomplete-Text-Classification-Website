@@ -1,5 +1,5 @@
 
-import classNames from 'classnames';
+// import classNames from 'classnames';
 import Image from 'next/image';
 // import {aboutData1, aboutData2} from '../../../data/data';
 
