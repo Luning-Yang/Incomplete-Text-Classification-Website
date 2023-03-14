@@ -11,11 +11,11 @@ import StackOverflowIcon from '../components/Icon/StackOverflowIcon';
 import TwitterIcon from '../components/Icon/TwitterIcon';
 import heroImage from '../images/header-background.webp';
 
-import profilepic from '../images/model-pipeline.png';
-import profilepic1 from '../images/word-cloud.png';
+// import profilepic from '../images/model-pipeline.png';
+// import profilepic1 from '../images/word-cloud.png';
 import {
   About,
-  About1,
+  // About1,
   ContactSection,
   ContactType,
   Hero,
