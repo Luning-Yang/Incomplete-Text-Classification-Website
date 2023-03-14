@@ -1,7 +1,7 @@
 
-import classNames from 'classnames';
-import Image from 'next/image';
-import {aboutData1, aboutData2} from '../../../data/data';
+// import classNames from 'classnames';
+// import Image from 'next/image';
+// import {aboutData1, aboutData2} from '../../../data/data';
 
 
 
@@ -59,9 +59,9 @@ const Resume: FC = memo(() => {
           ))}
 
           
-                <div className="relative h-600 w-650 overflow-hidden rounded-xl md:h-62 md:w-120">
+                {/*<div className="relative h-600 w-650 overflow-hidden rounded-xl md:h-62 md:w-120">
                   <Image alt="about-me-image" layout="responsive" src={aboutData1.profileImageSrc} />
-                </div>
+                </div>*/}
 
           <div style={{height: '2em'}}></div>
 
@@ -88,9 +88,9 @@ const Resume: FC = memo(() => {
             <TimelineItem item={item} key={`${item.title}-${index}`} />
           ))}
           
-          <div className="relative h-70 w-90  overflow-hidden rounded-xl md:h-70 md:w-120">
+         {/* <div className="relative h-70 w-90  overflow-hidden rounded-xl md:h-70 md:w-120">
             <Image alt="about-me-image1" layout="responsive" src={aboutData2.profileImageSrc} />
-          </div>
+          </div>*/}
 
 
 
