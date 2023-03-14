@@ -1,6 +1,6 @@
 
-// import classNames from 'classnames';
-// import Image from 'next/image';
+import classNames from 'classnames';
+import Image from 'next/image';
 // import {aboutData1, aboutData2} from '../../../data/data';
 
 
@@ -59,9 +59,9 @@ const Resume: FC = memo(() => {
           ))}
 
           
-                {/*<div className="relative h-600 w-650 overflow-hidden rounded-xl md:h-62 md:w-120">
-                  <Image alt="about-me-image" layout="responsive" src={aboutData1.profileImageSrc} />
-                </div>*/}
+                <div className="relative h-600 w-650 overflow-hidden rounded-xl md:h-62 md:w-120">
+                  <Image alt="about-me-image" layout="responsive" src={'../../../images/model-pipeline.png'} />
+                </div>
 
           <div style={{height: '2em'}}></div>
 

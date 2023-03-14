@@ -1,11 +1,7 @@
 import {
-  // AcademicCapIcon,
-  // CalendarIcon,
   DownloadIcon,
-  // FlagIcon,
   MapIcon,
   OfficeBuildingIcon,
-  // SparklesIcon,
 } from '@heroicons/react/outline';
 
 import GithubIcon from '../components/Icon/GithubIcon';
@@ -92,13 +88,13 @@ export const aboutData: About = {
   ],
 };
 
-export const aboutData1: About1 = {
-  profileImageSrc: profilepic,
-};
+// export const aboutData1: About1 = {
+//   profileImageSrc: profilepic,
+// };
 
-export const aboutData2: About1 = {
-  profileImageSrc: profilepic1,
-};
+// export const aboutData2: About1 = {
+//   profileImageSrc: profilepic1,
+// };
 
 
 
