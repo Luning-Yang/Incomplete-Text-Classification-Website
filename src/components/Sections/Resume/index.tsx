@@ -3,7 +3,7 @@
 import Image from 'next/image';
 // import {aboutData1, aboutData2} from '../../../data/data';
 import profilepic from '../../../images/model-pipeline.png';
-// import profilepic1 from '../../../images/word-cloud.png';
+import profilepic1 from '../../../images/word-cloud.png';
 
 
 
@@ -90,9 +90,9 @@ const Resume: FC = memo(() => {
             <TimelineItem item={item} key={`${item.title}-${index}`} />
           ))}
           
-         {/* <div className="relative h-70 w-90  overflow-hidden rounded-xl md:h-70 md:w-120">
-            <Image alt="about-me-image1" layout="responsive" src={aboutData2.profileImageSrc} />
-          </div>*/}
+          <div className="relative h-70 w-90  overflow-hidden rounded-xl md:h-70 md:w-120">
+            <Image alt="about-me-image1" layout="responsive" src={profilepic1} />
+          </div>
 
 
 
