@@ -17,6 +17,7 @@ import {
   About,
   // About1,
   ContactSection,
+  ContactSection1,
   ContactType,
   Hero,
   HomepageMeta,
