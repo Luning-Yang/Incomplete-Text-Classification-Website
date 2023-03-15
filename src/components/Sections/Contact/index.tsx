@@ -24,15 +24,15 @@ const ContactValueMap: Record<ContactType, ContactValue> = {
 };
 
 const Contact: FC = memo(() => {
-  const {headerText, description, items} = contact;
-  const {headerText1, description1, items1} = contact1;
+  const {headerText, items} = contact;
+  const {headerText1, items1} = contact1;
 
   return (
     <Section className="bg-neutral-800" sectionId={SectionId.Contact}>
       <div className="flex flex-col items-center justify-center gap-y-6">
        <div className="flex flex-col gap-6 md:flex-row md:items-center">
           <MailIcon className="hidden h-16 w-16 text-white md:block" />
-          <h2 className="text-2xl font-bold text-white justify-left">{headerText1}</h2>
+          <h2 className="text-2xl font-bold text-white justify-left">{headerText}</h2>
         </div>
         <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
         </div>

@@ -131,7 +131,7 @@ const Resume: FC = memo(() => {
                   <Image alt="about-me-image" layout="responsive" src={profilepic} />
                 </div>
 
-          <h className="text-1xl text-neutral-800" style={{textAlign: 'center', display: 'flex', justifyContent: 'center', alignItems: 'center'}}>Figure 1: Model Pipeline Illustration </h>
+          <h1 className="text-1xl text-neutral-800" style={{textAlign: 'center', display: 'flex', justifyContent: 'center', alignItems: 'center'}}>Figure 1: Model Pipeline Illustration </h1>
           <div style={{height: '0.75em'}}></div>
           <p> Figure 1 illustrates the model pipeline for both of
               the baseline and the final models. The models for
