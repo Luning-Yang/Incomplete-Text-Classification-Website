@@ -77,12 +77,24 @@ export const heroData: Hero = {
  * About section
  */
 export const aboutData: About = {
-  description: `Most text classification models require users to provide a full set of potential class labels, \
-  and force the model to predict within the set. This creates burden for humans to be as comprehensive and accurate \
-  as possible in manual labeling, which is unrealistic. We explore the Incomplete Text Classification (IC-TC) setting: \
-  Models mine patterns in a small labeled set \
-  which only contains existing labels, apply patterns to predict into existing labels in an unlabeled set, and \
-  detect out-of-pattern clusters for potential new label discoveries.`.trim(),
+  description: `Many text classification models rely on the
+assumption that requires users to provide the
+model with a full set of class labels. This is
+not realistic, as users may not be aware of all
+possible classes in advance, or may not be able
+to obtain an exhaustive list. These models also
+forced to predict any new document to one of
+the existing classes, where none of the existing labels is a good fit. Thus, we explore the
+Incomplete Text Classification (IC-TC) setting:
+Models mine patterns in a small labeled set
+which only contains existing labels, apply patterns to predict into existing labels in an unlabeled set, and detect out-of-pattern clusters
+for potential new label discoveries. We experiment with the potential of weakly supervised
+ML to detect class labels that humans may not
+recognize, thus facilitating more accurate classification. From the document and class embeddings and unconfident documents generated,
+we found that both the baseline and the final
+model had some capability of detecting unseen
+classes, and label generation techniques help
+produce reasonable new class labels.`.trim(),
   aboutItems: [
     {label: 'Section', text: 'B14: Weakly Supervised NLP', Icon: MapIcon},
     {label: 'Advisor', text: 'Jingbo Shang', Icon: OfficeBuildingIcon},
@@ -235,35 +247,7 @@ export const results: TimelineItem[] = [
                                                                                                       clustering and label generation.</li>
     
 
-    <li> <strong className="text-stone-100" style={{ color: 'black' }}>Experiment Results</strong>: Table 2 shows the results
-                                                                                                    of experimenting with different threshold cutoffs
-                                                                                                    (0.05, 0.1, 0.15) and 2 PCA dimensions (128, 256).
-                                                                                                    From the existing labels prediction, we could see
-                                                                                                    that the supervised + weakly supervised models
-                                                                                                    perform relatively well on classes already known
-                                                                                                    in the dataset, and has improved from the baseline Word2Vec representations. Also, compared
-                                                                                                    to ConWea replication where seed words are all
-                                                                                                    human-chosen, the ability for the model to learn the
-                                                                                                    seed words from the existing labeled documents are helping the understanding of existing classes. Note
-                                                                                                    that sometimes in the ConWea setting we might
-                                                                                                    not have enough labeled documents to generate the
-                                                                                                    seed words, so human effort is still useful.
-                                                                                                    The new label binary classification show satisfactory results, as in all the experiment settings we
-                                                                                                    observe a precision close or over 0.9, showing that
-                                                                                                    the similarity cutoff is picking mostly correct out-of-distribution documents. On the other hand, the
-                                                                                                    recall is less optimal, but it increases drastically if
-                                                                                                    we take more documents. This indicates that
-                                                                                                    and existing label performance show satisfactory
-                                                                                                    results
-                                                                                                    With the low binary classification results, it’s
-                                                                                                    no surprise that the labels generated are not close
-                                                                                                    to the truly removed labels, but we could detect a
-                                                                                                    pattern of increasing dominance of popular classes
-                                                                                                    in the newly generated labels. When the threshold
-                                                                                                    is increased, the more documents from existing
-                                                                                                    classes and thus popular classes become part of
-                                                                                                    the unconfident set, and the new labels detected by
-                                                                                                    TF-IDF will be closer to represent popular classes.</li>
+
 
     </p>,
 

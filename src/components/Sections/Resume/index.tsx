@@ -4,6 +4,8 @@ import Image from 'next/image';
 // import {aboutData1, aboutData2} from '../../../data/data';
 import profilepic from '../../../images/model-pipeline.png';
 import profilepic1 from '../../../images/word-cloud.png';
+import profilepic2 from '../../../images/table.png';
+import profilepic3 from '../../../images/wc.png';
 
 
 
@@ -127,8 +129,8 @@ const Resume: FC = memo(() => {
           ))}
 
           
-                <div className="relative h-600 w-650 overflow-hidden rounded-xl md:h-62 md:w-120">
-                  <Image alt="about-me-image" layout="responsive" src={profilepic} />
+                <div className="relative h-600 w-650 overflow-hidden rounded-xl md:h-62 md:w-120 flex justify-center items-center">
+                  <Image alt="about-me-image" src={profilepic} height = "230" width = "500"/>
                 </div>
 
           <h1 className="text-1xl text-neutral-800" style={{textAlign: 'center', display: 'flex', justifyContent: 'center', alignItems: 'center'}}>Figure 1: Model Pipeline Illustration </h1>
@@ -166,13 +168,74 @@ const Resume: FC = memo(() => {
             <TimelineItem item={item} key={`${item.title}-${index}`} />
           ))}
           
-          <div className="relative h-70 w-90  overflow-hidden rounded-xl md:h-70 md:w-120">
-            <Image alt="about-me-image1" layout="responsive" src={profilepic1} />
+          <div className="relative h-70 w-90  overflow-hidden rounded-xl md:h-70 md:w-120 flex justify-center items-center">
+            <Image alt="about-me-image1"  src={profilepic1} height = "350" width = "800"/>
           </div>
 
     <h2 className="text-1xl justify-left">  Figure 2: Maximum Similarity Distribution for Unlabeled Documents &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Figure 3: t-SNE Dimensionality Reduction for Unlabeled Documents</h2>
 
-    
+
+
+      <div style={{height: '2em'}}></div>
+      <li> <strong className="text-stone-100" style={{ color: 'black' }}>Experiment Results</strong>: Table 2 shows the results
+                                                                                                    of experimenting with different threshold cutoffs
+                                                                                                    (0.05, 0.1, 0.15) and 2 PCA dimensions (128, 256).
+                                                                                                    From the existing labels prediction, we could see
+                                                                                                    that the supervised + weakly supervised models
+                                                                                                    perform relatively well on classes already known
+                                                                                                    in the dataset, and has improved from the baseline Word2Vec representations. Also, compared
+                                                                                                    to ConWea replication where seed words are all
+                                                                                                    human-chosen, the ability for the model to learn the
+                                                                                                    seed words from the existing labeled documents are helping the understanding of existing classes. Note
+                                                                                                    that sometimes in the ConWea setting we might
+                                                                                                    not have enough labeled documents to generate the
+                                                                                                    seed words, so human effort is still useful.
+                                                                                                    The new label binary classification show satisfactory results, as in all the experiment settings we
+                                                                                                    observe a precision close or over 0.9, showing that
+                                                                                                    the similarity cutoff is picking mostly correct out-of-distribution documents. On the other hand, the
+                                                                                                    recall is less optimal, but it increases drastically if
+                                                                                                    we take more documents. This indicates that
+                                                                                                    and existing label performance show satisfactory
+                                                                                                    results
+                                                                                                    With the low binary classification results, it’s
+                                                                                                    no surprise that the labels generated are not close
+                                                                                                    to the truly removed labels, but we could detect a
+                                                                                                    pattern of increasing dominance of popular classes
+                                                                                                    in the newly generated labels. When the threshold
+                                                                                                    is increased, the more documents from existing
+                                                                                                    classes and thus popular classes become part of
+                                                                                                    the unconfident set, and the new labels detected by
+                                                                                                    TF-IDF will be closer to represent popular classes.</li>
+       <div style={{height: '2em'}}></div>
+      <div className="relative h-70 w-90  overflow-hidden rounded-xl md:h-70 md:w-90 flex justify-center items-center">
+            <Image alt="about-me-image1" src={profilepic2} height = "250" width = "500" />
+          </div>
+
+      <div style={{height: '2em'}}></div>
+      <p> The word cloud of each removed class and clustered class is plotted in Figure 4. From the label
+          comparison and the word cloud, most important
+          words show in aligned clusters, confirming that the
+          clusters found are relatively close to the original
+          classes. It also lays a good foundation for label
+          generation. In addition, ChatGPT also produces
+          reasonable generic labels for the clusters.
+          </p>
+
+      <div style={{height: '2em'}}></div>
+      <div className="relative h-70 w-90  overflow-hidden rounded-xl md:h-70 md:w-90 flex justify-center items-center">
+            <Image alt="about-me-image1" src={profilepic3} height = "350" width = "700" />
+          </div>
+
+       <h1 className="text-1xl text-neutral-800" style={{textAlign: 'center', display: 'flex', justifyContent: 'center', alignItems: 'center'}}>Figure 4: Word cloud for removed and
+generated labels, with manual row alignment. Note they don’t necessarily match.</h1>
+
+
+
+
+
+
+
+
 
     <div style={{height: '2em'}}></div>
     <div className="relative h-max" style={{textAlign: 'left'}}>
