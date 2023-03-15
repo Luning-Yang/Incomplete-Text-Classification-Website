@@ -1,6 +1,6 @@
 # Incomplete-Text-Classification-Website
 
-### [View Site](https://template-mq75-luning-yang.vercel.app/)
+### [View Site](https://incomplete-text-classification.vercel.app/)
 
 ---
 ### Local Dependency
