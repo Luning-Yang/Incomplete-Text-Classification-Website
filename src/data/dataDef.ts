@@ -124,6 +124,17 @@ export interface ContactSection {
   items: ContactItem[];
 }
 
+
+
+/**
+ * Contact section1
+ */
+export interface ContactSection1 {
+  headerText1?: string;
+  description1: string;
+  items1: ContactItem[];
+}
+
 export const ContactType = {
   Email: 'Email',
   Phone: 'Phone',

@@ -293,7 +293,7 @@ export const contact: ContactSection = {
 };
 
 
-export const contact1: ContactSection = {
+export const contact1: ContactSection1 = {
   headerText1: 'Contacts',
   description1: 'Here is a good spot for a message to your readers to let them know how best to reach out to you.',
   items1: [

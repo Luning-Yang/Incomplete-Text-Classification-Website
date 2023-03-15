@@ -25,7 +25,7 @@ const ContactValueMap: Record<ContactType, ContactValue> = {
 
 const Contact: FC = memo(() => {
   const {headerText, items} = contact;
-  const {headerText1, items1} = contact1;
+  const {items1} = contact1;
 
   return (
     <Section className="bg-neutral-800" sectionId={SectionId.Contact}>
