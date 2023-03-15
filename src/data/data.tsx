@@ -4,6 +4,7 @@ import {
   OfficeBuildingIcon,
 } from '@heroicons/react/outline';
 
+
 import GithubIcon from '../components/Icon/GithubIcon';
 import InstagramIcon from '../components/Icon/InstagramIcon';
 import LinkedInIcon from '../components/Icon/LinkedInIcon';
@@ -60,7 +61,7 @@ export const heroData: Hero = {
   ),
   actions: [
     {
-      href: '/assets/report.pdf',
+      href: 'https://drive.google.com/file/d/143pN7iuJi2iOFKQU2F2AAeL-VbexG-d8/view?usp=sharing',
       text: 'Report',
       primary: true,
       Icon: DownloadIcon,
