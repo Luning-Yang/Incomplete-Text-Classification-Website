@@ -22,7 +22,7 @@ const About: FC = memo(() => {
             <h2 className="text-2xl font-bold text-white">About our project</h2>
             <p className="prose prose-sm text-gray-300 sm:prose-base">{description}</p>
           </div>
-          <ul className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+{/*          <ul className="grid grid-cols-1 gap-4 sm:grid-cols-2">
             {aboutItems.map(({label, text, Icon}, idx) => (
               <li className="col-span-1 flex  items-start gap-x-2" key={idx}>
                 {Icon && <Icon className="h-5 w-5 text-white" />}
@@ -30,9 +30,12 @@ const About: FC = memo(() => {
                 <span className=" text-sm text-gray-300">{text}</span>
               </li>
             ))}
-          </ul>
+          </ul>*/}
         </div>
       </div>
+      <div style={{height: '2em'}}></div>
+      <p className="prose prose-sm text-gray-300 sm:prose-base text-white"><strong className="text-stone-100">Disclaimer</strong></p>
+      <p className="prose prose-sm text-gray-300 sm:prose-base text-white">Due to space limitations, please view all cited papers in the report.</p>
     </Section>
   );
 });

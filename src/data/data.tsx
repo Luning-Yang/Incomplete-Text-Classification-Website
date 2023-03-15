@@ -37,9 +37,9 @@ export const homePageMeta: HomepageMeta = {
  */
 export const SectionId = {
   Hero: 'hero',
-  About: 'intro',
+  About: 'abstract',
   Contact: 'contact',
-  Resume: 'setting',
+  Resume: 'Setting, Model, Analysis',
 } as const;
 
 export type SectionId = typeof SectionId[keyof typeof SectionId];
@@ -52,7 +52,7 @@ export const heroData: Hero = {
   name: `Text Classification based on a Subset of Labels`,
   description: (
     <>
-      <p className="mt-2 text-3xl font-bold tracking-tight text-white sm:text-4xl">
+      <p className="mt-2 text-3xl italic tracking-tight text-white sm:text-3xl">
       Yacun Wang, Luning Yang
       </p>
     </>
@@ -117,7 +117,12 @@ export const evaluation: TimelineItem[] = [
     title: 'New Label Binary',
     content: (
       <p>
-        Whether the new document belongs to unseen classes. Report precision and recall scores.
+        The model decides on whether to generate new labels for a document based on the confidence of
+        weak supervised document-class representations.
+        The sub-task of predicting whether a document
+        falls outside of existing classes is a binary classification prediction. We evaluate this sub-task using 
+        binary precision and recall, with <strong className="text-stone-100" style={{ color: 'black' }}> 
+        new labels necessary</strong> as the positive class.
       </p>
     ),
   },
@@ -133,7 +138,10 @@ export const evaluation: TimelineItem[] = [
     title: 'New Label Quality',
     content: (
       <p>
-        Manually comparing the newly generated labels with the true non-existing labels.
+        After new labels are generated, we inspect the quality of new labels using either manual inspection,
+        and plot word clouds comparing the significant
+        words appeared in the original removed classes and
+        the new clustered classes with generated labels.
       </p>
     ),
   },
@@ -157,9 +165,21 @@ export const models: TimelineItem[] = [
 export const models1: TimelineItem[] = [
   {
     title: 'Final Model',
-    content: <p><li><strong className="text-stone-100" style={{ color: 'black' }}>Word Embeddings</strong>: Average contextualized embedding of all occurrences from pre-trained bert-base-uncased model, dimension 768.</li>
-                <li><strong className="text-stone-100" style={{ color: 'black' }}>Representations</strong>: Use PCA to reduce embedding dimension to 128. </li>
-                <li><strong className="text-stone-100" style={{ color: 'black' }}>New Label Generation</strong>: Use ChatGPT API -- (1) Generate topics for top 25 documents in Gaussian probability per cluster; (2) Use the topics to generate class label. </li>
+    content: <p>
+    The final model fills in the remaining slots of the model pipeline by using:
+
+
+    <li><strong className="text-stone-100" style={{ color: 'black' }}>Word Embeddings</strong>: We obtain the contextualized static representations of each word 
+                                                                                                            using pre-trained BERT (Kenton and Toutanova, 2019) embeddings and averaging the representations of all occurrences of the word (Wang et al., 2021). 
+                                                                                                            We used the pre-trained bert-base-uncased model with its default vector dimension 768.</li>
+                <li><strong className="text-stone-100" style={{ color: 'black' }}>Representations</strong>: Since cosine similarity will perform poorly on a high-dimensional vector, 
+                                                                                                            we use PCA to reduce all class and document embeddings. </li>
+                <li><strong className="text-stone-100" style={{ color: 'black' }}>New Label Generation</strong>: Instead of directly using
+                                                                                                                  statistical methods, we use ChatGPT API – a
+                                                                                                                  chatbot fine-tuned using reinforcement learning on OpenAI’s state-of-the-art language model GPT-3 (Brown et al., 2020) that has
+                                                                                                                  showed ability for text generation and summarization. We prompt ChatGPT to: (1) 
+                                                                                                                  Generate topics for top 25 documents in Gaussian probability per cluster; 
+                                                                                                                  (2) Use the summarized topics to generate a generic class label. </li>
               </p>
 
   },
@@ -174,13 +194,76 @@ export const models1: TimelineItem[] = [
 export const results: TimelineItem[] = [
   {
     title: 'Summary of Findings',
-    content: <p><li><strong className="text-stone-100" style={{ color: 'black' }}>Seed Words</strong>: By inspection, TF-IDF is capable to identify quality seed words, especially after removing all duplicate seed words appeared in more than one label. </li>
-    <li><strong className="text-stone-100" style={{ color: 'black' }}>Confidence Split</strong>: By the bottom-left histogram, we consider a similarity score lower than 0.2 to be unconfident.</li>
-    <li><strong className="text-stone-100" style={{ color: 'black' }}>New Label Binary</strong>: Precision 0.844, Recall 0.694.</li>
-    <li> <strong className="text-stone-100" style={{ color: 'black' }}>Existing Performance</strong>: Micro-F1 0.889, Macro-F1 0.885.</li>
-    <li><strong className="text-stone-100" style={{ color: 'black' }}>Clustering</strong>: By the bottom-right t-SNE low-dimensional representation, most unconfident documents have neighbor patterns to form clusters.</li>
-    <li><strong className="text-stone-100" style={{ color: 'black' }}>Generated Labels</strong>: By word clouds on the left, most important words show in aligned clusters, confirming the quality of BERT 
-    contextualized class/document representations; ChatGPT also produces reasonable generic labels.</li>
+    content: <p>
+    We report the results of the final model, by the same order as the pipeline shows:
+
+    <li><strong className="text-stone-100" style={{ color: 'black' }}>Seed Words</strong>: We present a few example seed
+                                                                                            words generated from the first supervised TF-IDF
+                                                                                            module below. The basic TF-IDF scores are able
+                                                                                            to identify relatively representative seed words. </li>
+
+    <li><strong className="text-stone-100" style={{ color: 'black' }}>Similarity Distribution</strong>: Figure 2 shows the distribution of the maximum cosine similarity found
+                                                                                                        for all unlabeled documents, and thus provides
+                                                                                                        us with the criteria to get unconfident documents.
+                                                                                                        From the figure, the distribution is roughly normal
+                                                                                                        with a slight right skew, and the value ranges from
+                                                                                                        -0.2 to almost 1.0. This is the ideal distribution,
+                                                                                                        since by the definition of cosine similarity, there
+                                                                                                        will be similarities at 0, indicating the representa-
+                                                                                                        tions are not related; there will also be negative
+                                                                                                        similarities, indicating the representations mean
+                                                                                                        something opposite.</li>
+
+
+
+    <li><strong className="text-stone-100" style={{ color: 'black' }}>Unconfident Documents</strong>: Figure 3 shows the
+                                                                                                      2D unconfident document representations after applying the t-SNE (van der Maaten and Hinton,
+                                                                                                      2008) dimensionality reduction technique to visualize the high-dimensional data, color coded by
+                                                                                                      their original label, with "Other" indicating any existing labels. To generate the 2D representation,
+                                                                                                      we followed the suggestions on sklearn t-SNE
+                                                                                                      to first use Principle Component Analysis (PCA) to reduce to 50 dimensions, and apply t-SNE with
+                                                                                                      perplexity 30. From the figure, the unconfident
+                                                                                                      documents follow pretty closely with the original
+                                                                                                      removed labels, and 4 new class distributions are
+                                                                                                      distinctive to be clustered: Transportation, Politics,
+                                                                                                      School, Building. From this distribution, we could
+                                                                                                      expect the Gaussian Mixture method to detect most
+                                                                                                      of the new classes relatively well, with the exception that the "Transportation" class (in orange) has
+                                                                                                      two clear centers, which might not be well detected
+                                                                                                      by the model. There will also be a few noisy documents lying around (0, 0) in t-SNE that confuses
+                                                                                                      clustering and label generation.</li>
+    
+
+    <li> <strong className="text-stone-100" style={{ color: 'black' }}>Experiment Results</strong>: Table 2 shows the results
+                                                                                                    of experimenting with different threshold cutoffs
+                                                                                                    (0.05, 0.1, 0.15) and 2 PCA dimensions (128, 256).
+                                                                                                    From the existing labels prediction, we could see
+                                                                                                    that the supervised + weakly supervised models
+                                                                                                    perform relatively well on classes already known
+                                                                                                    in the dataset, and has improved from the baseline Word2Vec representations. Also, compared
+                                                                                                    to ConWea replication where seed words are all
+                                                                                                    human-chosen, the ability for the model to learn the
+                                                                                                    seed words from the existing labeled documents are helping the understanding of existing classes. Note
+                                                                                                    that sometimes in the ConWea setting we might
+                                                                                                    not have enough labeled documents to generate the
+                                                                                                    seed words, so human effort is still useful.
+                                                                                                    The new label binary classification show satisfactory results, as in all the experiment settings we
+                                                                                                    observe a precision close or over 0.9, showing that
+                                                                                                    the similarity cutoff is picking mostly correct out-of-distribution documents. On the other hand, the
+                                                                                                    recall is less optimal, but it increases drastically if
+                                                                                                    we take more documents. This indicates that
+                                                                                                    and existing label performance show satisfactory
+                                                                                                    results
+                                                                                                    With the low binary classification results, it’s
+                                                                                                    no surprise that the labels generated are not close
+                                                                                                    to the truly removed labels, but we could detect a
+                                                                                                    pattern of increasing dominance of popular classes
+                                                                                                    in the newly generated labels. When the threshold
+                                                                                                    is increased, the more documents from existing
+                                                                                                    classes and thus popular classes become part of
+                                                                                                    the unconfident set, and the new labels detected by
+                                                                                                    TF-IDF will be closer to represent popular classes.</li>
+
     </p>,
 
   },
@@ -192,7 +275,7 @@ export const results: TimelineItem[] = [
  * Contact section
  */
 export const contact: ContactSection = {
-  headerText: 'Get in touch.',
+  headerText: 'Contact',
   description: 'Here is a good spot for a message to your readers to let them know how best to reach out to you.',
   items: [
     {
@@ -200,27 +283,31 @@ export const contact: ContactSection = {
       text: 'yaw006@ucsd.edu',
        href: 'mailto: yaw006@ucsd.edu',
     },
-
-     {
-      type: ContactType.Email,
-      text: 'l4yang@ucsd.edu',
-      href: 'mailto: l4yang@ucsd.edu',
-    },
-    {
-      type: ContactType.Location,
-      text: 'University of California San Diego, US',
-      href: 'https://www.google.com/maps/d/viewer?mid=1rRQbZPK04KMnBJbyneZ35ItQWpo&hl=en&ll=32.88006040000004%2C-117.23401350000002&z=18',
-    },
     {
       type: ContactType.Github,
       text: 'colts661',
       href: 'https://github.com/colts661',
+    },
+
+  ],
+};
+
+
+export const contact1: ContactSection = {
+  headerText1: 'Contacts',
+  description1: 'Here is a good spot for a message to your readers to let them know how best to reach out to you.',
+  items1: [
+    {
+      type: ContactType.Email,
+      text: 'l4yang@ucsd.edu',
+      href: 'mailto: l4yang@ucsd.edu',
     },
     {
       type: ContactType.Github,
       text: 'Luning-Yang',
       href: 'https://github.com/Luning-Yang',
     },
+
   ],
 };
 
